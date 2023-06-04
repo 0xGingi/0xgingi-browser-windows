@@ -1,0 +1,64 @@
+{
+  "name": "0xGingi Browser",
+  "vendor": "0xGingi",
+  "appId": "com.0xgingi.browser",
+  "binaryName": "0xgingi-browser",
+  "version": {
+    "product": "firefox",
+    "version": "113.0.2"
+  },
+  "buildOptions": {
+    "windowsUseSymbolicLinks": false
+  },
+  "addons": {
+    "ublock": {
+      "platform": "github",
+      "id": "uBlock0@raymondhill.net",
+      "repo": "gorhill/uBlock",
+      "version": "1.49.2",
+      "fileGlob": "uBlock0_*.firefox(.signed)?.xpi"
+    },
+    "canvasBlocker": {
+      "platform": "github",
+      "id": "canvasblocker@kkaspner.de",
+      "repo": "kkapsner/CanvasBlocker",
+      "version": "1.9",
+      "fileGlob": " canvasblocker.xpi"
+    },
+    "clearUrls": {
+      "platform": "github",
+      "id": "clearurls@clearurls.xyz",
+      "repo": "ClearURLs/Addon",
+      "version": "1.23.1",
+      "fileGlob": "ClearURLs-*-firefox.xpi"
+    }
+
+
+
+  },
+  "brands": {
+    "stable": {
+      "backgroundColor": "#2b2a33",
+      "brandShorterName": "0xGingi",
+      "brandShortName": "0xGingi Browser",
+      "brandFullName": "0xGingi Browser",
+      "release": {
+        "displayVersion": "1.0.0",
+        "github": {
+          "repo": "0xgingi/0xgingi-browser"
+        },
+        "x86": {
+          "windowsMar": "windows.mar",
+          "macosMar": "macosIntel.mar",
+          "linuxMar": "linux.mar"
+        }
+      }
+    }
+  },
+  "license": {
+    "ignoredFiles": [
+      ".*\\.json"
+    ],
+    "licenseType": "MPL-2.0"
+  }
+}
