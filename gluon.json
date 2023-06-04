@@ -23,7 +23,7 @@
       "id": "canvasblocker@kkaspner.de",
       "repo": "kkapsner/CanvasBlocker",
       "version": "1.9",
-      "fileGlob": " canvasblocker.xpi"
+      "fileGlob": "canvasblocker.xpi"
     },
     "clearUrls": {
       "platform": "github",
