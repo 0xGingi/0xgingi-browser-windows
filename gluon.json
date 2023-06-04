@@ -48,9 +48,7 @@
           "repo": "0xgingi/0xgingi-browser"
         },
         "x86": {
-          "windowsMar": "windows.mar",
-          "macosMar": "macosIntel.mar",
-          "linuxMar": "linux.mar"
+          "windowsMar": "windows.mar"
         }
       }
     }
