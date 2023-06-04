@@ -37,7 +37,7 @@
 
   },
   "brands": {
-    "stable": {
+    "gingi": {
       "backgroundColor": "#2b2a33",
       "brandShorterName": "0xGingi",
       "brandShortName": "0xGingi Browser",
@@ -51,8 +51,8 @@
           "windowsMar": "windows.mar"
         }
       }
-    }
-  },
+      }
+    },
   "license": {
     "ignoredFiles": [
       ".*\\.json"
