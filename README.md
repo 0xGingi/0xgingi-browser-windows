@@ -20,7 +20,9 @@ An experimental Firefox fork that enhances privacy and security.
 
 ## Install
 [Releases](https://github.com/0xgingi/0xgingi-browser/releases) page.
-(Linux + Mac Coming Soon)
+(Mac Coming Soon)
+
+Alternatively, build with [Gluon](https://github.com/pulse-browser/gluon)
 
 
 ## Goals
