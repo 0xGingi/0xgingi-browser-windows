@@ -35,7 +35,7 @@
     }
   },
   "brands": {
-    "0xgingi": {
+    "unofficial": {
       "backgroundColor": "#2b2a33",
       "brandShorterName": "0xGingi",
       "brandShortName": "0xGingi Browser",
@@ -46,8 +46,8 @@
           "repo": "0xgingi/0xgingi-browser"
         },
         "x86": {
-          "windowsMar": "windows.mar",
-          "linuxMar": "linux.mar"
+          "linuxMar": "linux.mar",
+          "windowsMar": "windows.mar"
         }
       }
     }
