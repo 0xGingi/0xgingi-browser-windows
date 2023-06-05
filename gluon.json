@@ -43,12 +43,13 @@
       "brandShortName": "0xGingi Browser",
       "brandFullName": "0xGingi Browser",
       "release": {
-        "displayVersion": "1.0.0",
+        "displayVersion": "113.0.2",
         "github": {
           "repo": "0xgingi/0xgingi-browser"
         },
         "x86": {
-          "windowsMar": "windows.mar"
+          "windowsMar": "windows.mar",
+          "linuxMar": "linux.mar"
         }
       }
       }
