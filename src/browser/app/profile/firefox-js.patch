@@ -1,5 +1,5 @@
 diff --git a/browser/app/profile/firefox.js b/browser/app/profile/firefox.js
-index 56c8022ec4bbeda70e09c3b8780afcbf21ba0579..0e7dc445b96c7a347102b35660a0796092284d15 100644
+index 56c8022ec4bbeda70e09c3b8780afcbf21ba0579..c2d6a643ae8673d8aec3b648f3c525efe17223d4 100644
 --- a/browser/app/profile/firefox.js
 +++ b/browser/app/profile/firefox.js
 @@ -33,7 +33,7 @@ pref("extensions.checkCompatibility.temporaryThemeOverride_minAppVersion", "29.0
@@ -558,10 +558,10 @@ index 56c8022ec4bbeda70e09c3b8780afcbf21ba0579..0e7dc445b96c7a347102b35660a07960
 -pref("extensions.pocket.refresh.emailButton.enabled", false);
 -// Hides the recently saved section in the home panel.
 -pref("extensions.pocket.refresh.hideRecentSaves.enabled", false);
-+pref('extensions.pocket.enabled', false)
-+pref('extensions.pocket.api', ' ')
-+pref('extensions.pocket.oAuthConsumerKey', ' ')
-+pref('extensions.pocket.site', ' ')
++pref('extensions.pocket.enabled', false);
++pref('extensions.pocket.api', ' ');
++pref('extensions.pocket.oAuthConsumerKey', ' ');
++pref('extensions.pocket.site', ' ');
  
  pref("signon.management.page.fileImport.enabled", false);
  
@@ -621,5 +621,4 @@ index 56c8022ec4bbeda70e09c3b8780afcbf21ba0579..0e7dc445b96c7a347102b35660a07960
 +pref(
 +  'browser.newtabpage.activity-stream.section.highlights.includePocket',
 +  false
-+)
-\ No newline at end of file
++);

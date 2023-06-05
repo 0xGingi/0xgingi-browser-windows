@@ -8,7 +8,8 @@
     "version": "113.0.2"
   },
   "buildOptions": {
-    "windowsUseSymbolicLinks": false
+    "windowsUseSymbolicLinks": false,
+    "generateBranding": true
   },
   "addons": {
     "ublock": {
@@ -34,7 +35,7 @@
     }
   },
   "brands": {
-    "gingi": {
+    "0xgingi": {
       "backgroundColor": "#2b2a33",
       "brandShorterName": "0xGingi",
       "brandShortName": "0xGingi Browser",
