@@ -30,11 +30,8 @@
       "id": "clearurls@clearurls.xyz",
       "repo": "ClearURLs/Addon",
       "version": "1.23.1",
-      "fileGlob": "ClearURLs-*-firefox.xpi"
+      "fileGlob": "clearurls-*-firefox.xpi"
     }
-
-
-
   },
   "brands": {
     "gingi": {
@@ -52,8 +49,8 @@
           "linuxMar": "linux.mar"
         }
       }
-      }
-    },
+    }
+  },
   "license": {
     "ignoredFiles": [
       ".*\\.json"
