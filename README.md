@@ -26,7 +26,7 @@ An experimental [ungoogled-chromium](https://github.com/ungoogled-software/ungoo
 ## Goals
 
 - Enhance Default Browser Privacy + Security OOTB
-- Replace some internal chromium components with better open source alternatives (e.g. Bromite Patches)
+- Modify some internal chromium components with better alternatives (e.g. Bromite Patches)
 - Remove google telemetry/spyware
 
 ## TO-DO
