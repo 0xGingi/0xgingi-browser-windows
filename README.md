@@ -1,6 +1,7 @@
 <div align="center">
 
-<img src="https://github.com/0xGingi/0xgingi-browser/blob/main/config/branding/stable/logo.png?raw=true">
+  ![logo](https://github.com/0xGingi/0xgingi-browser/assets/104647854/cec41b3d-0279-4405-89f0-33d6682b681c)
+
 
 # 0xGingi Browser
 An experimental ungoogled-chromium fork that enhances privacy and security.
