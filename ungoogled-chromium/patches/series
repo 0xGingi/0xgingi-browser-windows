@@ -1,3 +1,5 @@
+upstream/Fix-autocomplete-controller-build-with-tflite-lib-disabled.patch
+
 core/inox-patchset/0001-fix-building-without-safebrowsing.patch
 core/inox-patchset/0003-disable-autofill-download-manager.patch
 core/inox-patchset/0005-disable-default-extensions.patch
@@ -98,3 +100,4 @@ extra/ungoogled-chromium/add-flag-for-disabling-link-drag.patch
 extra/ungoogled-chromium/add-flag-to-hide-extensions-menu.patch
 extra/ungoogled-chromium/add-flag-to-hide-fullscreen-exit-ui.patch
 extra/ungoogled-chromium/add-flag-for-incognito-themes.patch
+extra/ungoogled-chromium/add-flags-for-referrer-customization.patch
