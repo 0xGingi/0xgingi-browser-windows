@@ -23,7 +23,7 @@ An experimental [ungoogled-chromium](https://github.com/ungoogled-software/ungoo
 ## Install
 [Releases](https://github.com/0xgingi/0xgingi-browser/releases) page.
 
-*Highly Reccomended To Install [Ublock Origin](https://github.com/gorhill/uBlock/releases/tag/1.49.2) Extension*
+*Highly Reccomended To Install [Ublock Origin](https://github.com/gorhill/uBlock/releases/tag/1.49.2) Extension with setting reccomendations from [Arkenfox](https://github.com/arkenfox/user.js/wiki/4.1-Extensions)*
 
 Alternativly, instead of manually installing add-ons, [follow this guide](https://avoidthehack.com/manually-install-extensions-ungoogled-chromium) to install the chromium web store.
 
