@@ -4,7 +4,7 @@
 
 
 # 0xGingi Browser
-An experimental ungoogled-chromium fork that enhances privacy and security.
+An experimental [ungoogled-chromium](https://github.com/ungoogled-software/ungoogled-chromium) fork that enhances privacy and security.
 
 </div>
 
