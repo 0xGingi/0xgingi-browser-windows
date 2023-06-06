@@ -32,3 +32,5 @@ An experimental ungoogled-chromium fork that enhances privacy and security.
 
 - Change Default DOH DNS to 0xGingi Cloudflare Proxy
 - Install some Plugins (eg Ublock Origin) by default
+- More Hardening
+- Other Misc. Changes to Enchance Privacy
