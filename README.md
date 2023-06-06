@@ -35,4 +35,4 @@ An experimental [ungoogled-chromium](https://github.com/ungoogled-software/ungoo
 - Install some Plugins (eg Ublock Origin) by default
 - More Hardening
 - Other Misc. Changes to Enchance Privacy
-- Automatic Updates
+- Automatic Updates (Best option until automatic updates are working is to watch for releases on github so you get a email when a new release is added, I will try to have all chromium updates released within 24 hours)
