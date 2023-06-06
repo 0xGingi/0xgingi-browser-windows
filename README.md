@@ -35,3 +35,4 @@ An experimental ungoogled-chromium fork that enhances privacy and security.
 - Install some Plugins (eg Ublock Origin) by default
 - More Hardening
 - Other Misc. Changes to Enchance Privacy
+- Automatic Updates
