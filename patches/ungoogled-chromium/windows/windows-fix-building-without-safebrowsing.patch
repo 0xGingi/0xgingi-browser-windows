@@ -1,0 +1,157 @@
+# Fix building without Safe Browsing on Windows
+# This also removes other unnecessary services that depend on Safe Browsing, such as Chrome Cleaner
+
+--- a/chrome/app/BUILD.gn
++++ b/chrome/app/BUILD.gn
+@@ -42,10 +42,7 @@ source_set("chrome_dll_resources") {
+   deps = [ ":command_ids" ]
+ 
+   if (is_win) {
+-    sources += [
+-      "chrome_dll.rc",
+-      "etw_events/chrome_events_win.rc",
+-    ]
++    sources += [ "chrome_dll.rc" ]
+ 
+     deps += [
+       "//build:branding_buildflags",
+--- a/chrome/browser/chrome_browser_main_win.cc
++++ b/chrome/browser/chrome_browser_main_win.cc
+@@ -332,15 +332,6 @@ void ShowCloseBrowserFirstMessageBox() {
+       l10n_util::GetStringUTF16(IDS_UNINSTALL_CLOSE_APP));
+ }
+ 
+-void MaybePostSettingsResetPrompt() {
+-  if (base::FeatureList::IsEnabled(safe_browsing::kSettingsResetPrompt)) {
+-    content::GetUIThreadTaskRunner({base::TaskPriority::BEST_EFFORT})
+-        ->PostTask(FROM_HERE,
+-                   base::BindOnce(
+-                       safe_browsing::MaybeShowSettingsResetPromptWithDelay));
+-  }
+-}
+-
+ // Updates all Progressive Web App launchers in |profile_dir| to the latest
+ // version.
+ void UpdatePwaLaunchersForProfile(const base::FilePath& profile_dir) {
+@@ -564,23 +555,6 @@ void ChromeBrowserMainPartsWin::PostBrow
+ 
+   InitializeChromeElf();
+ 
+-  // Reset settings for the current profile if it's tagged to be reset after a
+-  // complete run of the Chrome Cleanup tool. If post-cleanup settings reset is
+-  // enabled, we delay checks for settings reset prompt until the scheduled
+-  // reset is finished.
+-  if (safe_browsing::PostCleanupSettingsResetter::IsEnabled() &&
+-      !base::CommandLine::ForCurrentProcess()->HasSwitch(switches::kAppId)) {
+-    // Using last opened profiles, because we want to find reset the profile
+-    // that was open in the last Chrome run, which may not be open yet in
+-    // the current run.
+-    safe_browsing::PostCleanupSettingsResetter().ResetTaggedProfiles(
+-        g_browser_process->profile_manager()->GetLastOpenedProfiles(),
+-        base::BindOnce(&MaybePostSettingsResetPrompt),
+-        std::make_unique<
+-            safe_browsing::PostCleanupSettingsResetter::Delegate>());
+-  } else {
+-    MaybePostSettingsResetPrompt();
+-  }
+ 
+   // Query feature first, to include full population in field trial.
+   if (base::FeatureList::IsEnabled(features::kAppBoundEncryptionMetrics) &&
+--- a/chrome/browser/prefs/browser_prefs.cc
++++ b/chrome/browser/prefs/browser_prefs.cc
+@@ -1334,8 +1334,6 @@ void RegisterLocalState(PrefRegistrySimp
+                                 true);
+   registry->RegisterBooleanPref(
+       policy::policy_prefs::kNativeWindowOcclusionEnabled, true);
+-  component_updater::RegisterPrefsForSwReporter(registry);
+-  safe_browsing::RegisterChromeCleanerScanCompletionTimePref(registry);
+   MediaFoundationServiceMonitor::RegisterPrefs(registry);
+   os_crypt::RegisterLocalStatePrefs(registry);
+ #if BUILDFLAG(GOOGLE_CHROME_BRANDING)
+@@ -1671,12 +1669,8 @@ void RegisterProfilePrefs(user_prefs::Pr
+ 
+ #if BUILDFLAG(IS_WIN)
+   CdmPrefServiceHelper::RegisterProfilePrefs(registry);
+-  component_updater::RegisterProfilePrefsForSwReporter(registry);
+   FontPrewarmerTabHelper::RegisterProfilePrefs(registry);
+   NetworkProfileBubble::RegisterProfilePrefs(registry);
+-  safe_browsing::SettingsResetPromptPrefsManager::RegisterProfilePrefs(
+-      registry);
+-  safe_browsing::PostCleanupSettingsResetter::RegisterProfilePrefs(registry);
+ #endif
+ 
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX)
+--- a/chrome/browser/safe_browsing/BUILD.gn
++++ b/chrome/browser/safe_browsing/BUILD.gn
+@@ -7,6 +7,7 @@ import("//components/safe_browsing/build
+ import("//extensions/buildflags/buildflags.gni")
+ 
+ static_library("safe_browsing") {
++  sources = [ "safe_browsing_dummy.cc" ]
+   if (false) {
+   sources = [
+     "chrome_controller_client.cc",
+--- a/chrome/browser/safe_browsing/chrome_cleaner/settings_resetter_win.cc
++++ b/chrome/browser/safe_browsing/chrome_cleaner/settings_resetter_win.cc
+@@ -192,7 +192,6 @@ PostCleanupSettingsResetter::Delegate::~
+ 
+ void PostCleanupSettingsResetter::Delegate::FetchDefaultSettings(
+     DefaultSettingsFetcher::SettingsCallback callback) {
+-  DefaultSettingsFetcher::FetchDefaultSettings(std::move(callback));
+ }
+ 
+ PostCleanupSettingsResetter::PostCleanupSettingsResetter() = default;
+--- a/chrome/browser/safe_browsing/chrome_cleaner/srt_client_info_win.cc
++++ b/chrome/browser/safe_browsing/chrome_cleaner/srt_client_info_win.cc
+@@ -34,20 +34,11 @@ int ChannelAsInt() {
+ }
+ 
+ bool SafeBrowsingExtendedReportingEnabled() {
+-  // Check all profiles registered with the manager.
+-  std::vector<Profile*> profiles =
+-      g_browser_process->profile_manager()->GetLoadedProfiles();
+-  return base::ranges::any_of(profiles, [](const Profile* profile) {
+-    return IsExtendedReportingEnabled(*profile->GetPrefs());
+-  });
++  return false;
+ }
+ 
+ bool SafeBrowsingExtendedReportingScoutEnabled() {
+-  std::vector<Profile*> profiles = ProfileManager::GetLastOpenedProfiles();
+-  return base::ranges::any_of(profiles, [](const Profile* profile) {
+-    return profile &&
+-           GetExtendedReportingLevel(*profile->GetPrefs()) == SBER_LEVEL_SCOUT;
+-  });
++  return false;
+ }
+ 
+ }  // namespace safe_browsing
+--- /dev/null
++++ b/chrome/browser/safe_browsing/safe_browsing_dummy.cc
+@@ -0,0 +1,3 @@
++#ifndef __safe_browsing_dummy__
++#define __safe_browsing_dummy__
++#endif
+--- a/chrome/browser/signin/signin_util_win.cc
++++ b/chrome/browser/signin/signin_util_win.cc
+@@ -268,12 +268,6 @@ bool IsGCPWUsedInOtherProfile(Profile* p
+ }
+ 
+ void SigninWithCredentialProviderIfPossible(Profile* profile) {
+-  // This flow is used for first time signin through credential provider. Any
+-  // subsequent signin for the credential provider user needs to go through
+-  // reauth flow.
+-  if (profile->GetPrefs()->GetBoolean(prefs::kSignedInWithCredentialProvider))
+-    return;
+-
+   std::wstring cred_provider_gaia_id;
+   std::wstring cred_provider_email;
+ 
+--- a/components/safe_browsing/buildflags.gni
++++ b/components/safe_browsing/buildflags.gni
+@@ -19,4 +19,5 @@ declare_args() {
+   } else {
+     safe_browsing_mode = 1
+   }
++  safe_browsing_mode = 0
+ }

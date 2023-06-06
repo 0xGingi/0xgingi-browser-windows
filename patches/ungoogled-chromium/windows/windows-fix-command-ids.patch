@@ -1,0 +1,71 @@
+--- a/chrome/app/chrome_command_ids.h
++++ b/chrome/app/chrome_command_ids.h
+@@ -65,16 +65,10 @@
+ #define IDC_MAXIMIZE_WINDOW             34047
+ #define IDC_ALL_WINDOWS_FRONT           34048
+ #define IDC_NAME_WINDOW                 34049
+-#if BUILDFLAG(IS_CHROMEOS)
++#if (0)
+ #define IDC_TOGGLE_MULTITASK_MENU       34050
+ #endif
+ 
+-// TODO(crbug.com/1052397): Revisit the macro expression once build flag switch of lacros-chrome is complete.
+-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS_LACROS)
+-#define IDC_USE_SYSTEM_TITLE_BAR        34051
+-#define IDC_RESTORE_WINDOW              34052
+-#endif
+-
+ #define IDC_OPEN_IN_PWA_WINDOW          34053
+ #define IDC_MOVE_TAB_TO_NEW_WINDOW          34054
+ 
+@@ -84,16 +78,6 @@
+ #define IDC_SITE_SETTINGS               34062
+ #define IDC_WEB_APP_MENU_APP_INFO    34063
+ 
+-#if BUILDFLAG(IS_CHROMEOS_ASH)
+-// Move window to other user commands
+-#define IDC_VISIT_DESKTOP_OF_LRU_USER_2 34080
+-#define IDC_VISIT_DESKTOP_OF_LRU_USER_3 34081
+-#define IDC_VISIT_DESKTOP_OF_LRU_USER_4 34082
+-#define IDC_VISIT_DESKTOP_OF_LRU_USER_5 34083
+-#define IDC_VISIT_DESKTOP_OF_LRU_USER_NEXT IDC_VISIT_DESKTOP_OF_LRU_USER_2
+-#define IDC_VISIT_DESKTOP_OF_LRU_USER_LAST IDC_VISIT_DESKTOP_OF_LRU_USER_5
+-#endif
+-
+ // Page-related commands
+ #define IDC_BOOKMARK_THIS_TAB           35000
+ #define IDC_BOOKMARK_ALL_TABS           35001
+@@ -227,7 +211,7 @@
+ #define IDC_CHROME_TIPS                40263
+ #define IDC_CHROME_WHATS_NEW           40264
+ 
+-#if BUILDFLAG(IS_CHROMEOS_ASH)
++#if (0)
+ #define IDC_LACROS_DATA_MIGRATION      40265
+ #endif
+ 
+@@ -422,7 +406,7 @@
+ #define IDC_MEDIA_ROUTER_TOGGLE_MEDIA_REMOTING 51208
+ 
+ // Context menu items for media toolbar button
+-#if BUILDFLAG(GOOGLE_CHROME_BRANDING)
++#if (0)
+ #define IDC_MEDIA_TOOLBAR_CONTEXT_REPORT_CAST_ISSUE 51209
+ #endif
+ #define IDC_MEDIA_TOOLBAR_CONTEXT_SHOW_OTHER_SESSIONS 51210
+@@ -456,13 +440,13 @@
+ #define IDC_CONTENT_CONTEXT_ACCESSIBILITY_LABELS 52411
+ #define IDC_CONTENT_CONTEXT_ACCESSIBILITY_LABELS_TOGGLE_ONCE 52412
+ 
+-#if BUILDFLAG(IS_CHROMEOS_ASH)
++#if (0)
+ // Quick Answers context menu items.
+ #define IDC_CONTENT_CONTEXT_QUICK_ANSWERS_INLINE_ANSWER 52413
+ #define IDC_CONTENT_CONTEXT_QUICK_ANSWERS_INLINE_QUERY 52414
+ #endif
+ 
+-#if BUILDFLAG(ENABLE_SCREEN_AI_SERVICE)
++#if (1)
+ // Screen AI Visual Annotations.
+ #define IDC_RUN_SCREEN_AI_VISUAL_ANNOTATIONS 52420
+ #endif  // BUILDFLAG(ENABLE_SCREEN_AI_SERVICE)

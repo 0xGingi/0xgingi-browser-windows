@@ -1,0 +1,12 @@
+# Windows does not support weak symbols
+--- a/base/BUILD.gn
++++ b/base/BUILD.gn
+@@ -1098,7 +1098,7 @@ component("base") {
+     public_deps += [ "//build/rust:cxx_cppdeps" ]
+   }
+ 
+-  if (use_custom_libcxx && enable_safe_libcxx && !is_debug) {
++  if (!is_win && use_custom_libcxx && enable_safe_libcxx && !is_debug) {
+     public_deps += [ ":nodebug_assertion" ]
+   }
+ 

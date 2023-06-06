@@ -1,0 +1,58 @@
+# Disables IPv6 probing and adds an option to change the IPv6 probing result
+
+--- a/chrome/browser/ungoogled_flag_entries.h
++++ b/chrome/browser/ungoogled_flag_entries.h
+@@ -4,4 +4,8 @@
+ 
+ #ifndef CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
+ #define CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
++    {"set-ipv6-probe-false",
++     "SetIpv6ProbeFalse",
++     "Forces the result of the browser's IPv6 probing (i.e. IPv6 connectivity test) to be unsuccessful. This causes IPv4 addresses to be prioritized over IPv6 addresses. Without this flag, the probing result is set to be successful, which causes IPv6 to be used over IPv4 when possible. ungoogled-chromium flag.",
++     kOsAll, FEATURE_VALUE_TYPE(net::features::kSetIpv6ProbeFalse)},
+ #endif  // CHROME_BROWSER_UNGOOGLED_FLAG_ENTRIES_H_
+--- a/net/base/features.cc
++++ b/net/base/features.cc
+@@ -12,6 +12,8 @@
+ 
+ namespace net::features {
+ 
++BASE_FEATURE(kSetIpv6ProbeFalse, "SetIpv6ProbeFalse", base::FEATURE_DISABLED_BY_DEFAULT);
++
+ BASE_FEATURE(kAlpsForHttp2, "AlpsForHttp2", base::FEATURE_ENABLED_BY_DEFAULT);
+ 
+ BASE_FEATURE(kAvoidH2Reprioritization,
+--- a/net/base/features.h
++++ b/net/base/features.h
+@@ -18,6 +18,8 @@
+ 
+ namespace net::features {
+ 
++NET_EXPORT BASE_DECLARE_FEATURE(kSetIpv6ProbeFalse);
++
+ // Enables ALPS extension of TLS 1.3 for HTTP/2, see
+ // https://vasilvv.github.io/tls-alps/draft-vvv-tls-alps.html and
+ // https://vasilvv.github.io/httpbis-alps/draft-vvv-httpbis-alps.html.
+--- a/net/dns/host_resolver_manager.cc
++++ b/net/dns/host_resolver_manager.cc
+@@ -155,11 +155,6 @@ const unsigned kMinimumTTLSeconds = kCac
+ // cached.
+ const int kIPv6ProbePeriodMs = 1000;
+ 
+-// RIPE NCC k.root-servers.net. 2001:7fd::1 (anycasted), used for IPv6 probes.
+-const uint8_t kIPv6ProbeAddress[] = {0x20, 0x01, 0x07, 0xfd, 0x00, 0x00,
+-                                     0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-                                     0x00, 0x00, 0x00, 0x01};
+-
+ // ICANN uses this localhost address to indicate a name collision.
+ //
+ // The policy in Chromium is to fail host resolving if it resolves to
+@@ -3759,7 +3754,7 @@ bool HostResolverManager::IsIPv6Reachabl
+       (tick_clock_->NowTicks() - last_ipv6_probe_time_).InMilliseconds() >
+           kIPv6ProbePeriodMs) {
+     SetLastIPv6ProbeResult(
+-        IsGloballyReachable(IPAddress(kIPv6ProbeAddress), net_log));
++        !base::FeatureList::IsEnabled(features::kSetIpv6ProbeFalse));
+     cached = false;
+   }
+   net_log.AddEvent(

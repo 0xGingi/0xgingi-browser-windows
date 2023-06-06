@@ -1,0 +1,64 @@
+# Disable machine ID generation on Windows.
+# See https://github.com/Eloston/ungoogled-chromium/issues/444
+
+--- a/chrome/browser/ungoogled_platform_flag_entries.h
++++ b/chrome/browser/ungoogled_platform_flag_entries.h
+@@ -8,4 +8,8 @@
+      "Disable encryption",
+      "Disable encryption of cookies, passwords, and settings which uses a generated machine-specific encryption key.  This is used to enable portable user data directories.  ungoogled-chromium flag.",
+      kOsWin, SINGLE_VALUE_TYPE("disable-encryption")},
++    {"disable-machine-id",
++     "Disable machine ID",
++     "Disables use of a generated machine-specific ID to lock the user data directory to that machine.  This is used to enable portable user data directories.  ungoogled-chromium flag.",
++     kOsWin, SINGLE_VALUE_TYPE("disable-machine-id")},
+ #endif  // CHROME_BROWSER_UNGOOGLED_PLATFORM_FLAG_ENTRIES_H_
+--- a/components/metrics/machine_id_provider_win.cc
++++ b/components/metrics/machine_id_provider_win.cc
+@@ -9,6 +9,7 @@
+ #include <winioctl.h>
+ 
+ #include "base/base_paths.h"
++#include "base/command_line.h"
+ #include "base/files/file_path.h"
+ #include "base/notreached.h"
+ #include "base/path_service.h"
+@@ -19,6 +20,9 @@ namespace metrics {
+ 
+ // static
+ bool MachineIdProvider::HasId() {
++  if (base::CommandLine::ForCurrentProcess()->HasSwitch("disable-machine-id")) {
++    return false;
++  }
+   return true;
+ }
+ 
+@@ -26,6 +30,10 @@ bool MachineIdProvider::HasId() {
+ // is running from.
+ // static
+ std::string MachineIdProvider::GetMachineId() {
++  if (base::CommandLine::ForCurrentProcess()->HasSwitch("disable-machine-id")) {
++    return std::string();
++  }
++
+   base::ScopedBlockingCall scoped_blocking_call(FROM_HERE,
+                                                 base::BlockingType::MAY_BLOCK);
+ 
+--- a/services/preferences/tracked/device_id_win.cc
++++ b/services/preferences/tracked/device_id_win.cc
+@@ -10,11 +10,16 @@
+ 
+ #include <memory>
+ 
++#include "base/command_line.h"
+ #include "base/check.h"
+ 
+ MachineIdStatus GetDeterministicMachineSpecificId(std::string* machine_id) {
+   DCHECK(machine_id);
+ 
++  if (base::CommandLine::ForCurrentProcess()->HasSwitch("disable-machine-id")) {
++    return MachineIdStatus::NOT_IMPLEMENTED;
++  }
++
+   wchar_t computer_name[MAX_COMPUTERNAME_LENGTH + 1] = {};
+   DWORD computer_name_size = std::size(computer_name);
+ 

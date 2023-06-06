@@ -1,0 +1,336 @@
+# Removes in order:
+# link to Chrome store on the extensions page when empty
+# link to Chrome store in extensions page sidebar
+# 'Tabs from other devices' entry on the History page sidebar
+# the 'Learn more' link on new incognito tabs
+# Live captions entry from the settings page
+# link to Google's accessibility site from the settings page
+# link to Google's help site on the About page
+# external link for theme entry on settings page
+# webstore text for theme entry on settings page
+# Check passwords and managed passwords sections from the passwords page
+# the Google account line from the Payment methods page
+# Safety check section on the settings page
+# Privacy guide promo on the privacy page
+# Google sign-in and Anonymized Data Collection sections
+# Privacy guide section on the privacy page
+# Advanced Protection Program link on the security settings page
+# the 'Learn more' link from the search engine entry on the settings page
+# Safety Check entry on the side menu on the settings page
+# the (?) learn more button on many settings pages
+# unneeded elements from the profile menu
+# the 'Learn more' link on crashed tabs
+
+--- a/chrome/browser/resources/extensions/item_list.html
++++ b/chrome/browser/resources/extensions/item_list.html
+@@ -80,13 +80,6 @@
+ <div id="container">
+   <managed-footnote hidden="[[filter]]"></managed-footnote>
+   <div id="content-wrapper" style="--max-columns: [[maxColumns_]];">
+-    <div id="no-items" class="empty-list-message"
+-        hidden$="[[!shouldShowEmptyItemsMessage_(
+-            apps.length, extensions.length)]]">
+-      <span on-click="onNoExtensionsTap_">
+-        $i18nRaw{noExtensionsOrApps}
+-      </span>
+-    </div>
+     <div id="no-search-results" class="empty-list-message"
+         hidden$="[[!shouldShowEmptySearchMessage_(
+             shownAppsCount_, shownExtensionsCount_, apps, extensions)]]">
+--- a/chrome/browser/resources/extensions/sidebar.html
++++ b/chrome/browser/resources/extensions/sidebar.html
+@@ -76,12 +76,3 @@
+     <paper-ripple></paper-ripple>
+   </a>
+ </iron-selector>
+-<div>
+-  <div class="separator"></div>
+-  <a class="section-item" id="more-extensions" target="_blank"
+-      href="$i18n{getMoreExtensionsUrl}" on-click="onMoreExtensionsTap_">
+-    <span>$i18n{openChromeWebStore}</span>
+-    <div class="cr-icon icon-external"></div>
+-    <paper-ripple></paper-ripple>
+-  </a>
+-</div>
+--- a/chrome/browser/resources/history/side_bar.html
++++ b/chrome/browser/resources/history/side_bar.html
+@@ -95,13 +95,6 @@
+         $i18n{historyMenuItem}
+         <paper-ripple></paper-ripple>
+       </a>
+-      <a id="syncedTabs" role="menuitem" href="/syncedTabs"
+-          class="page-item cr-nav-menu-item"
+-          path="syncedTabs" on-click="onItemClick_">
+-        <iron-icon icon="cr:phonelink"></iron-icon>
+-        $i18n{openTabsMenuItem}
+-        <paper-ripple></paper-ripple>
+-      </a>
+       <!-- tabindex is needed below because <a> without href attribute is not
+             focusable in sequential keyboard navigation by default. -->
+       <a role="menuitem" id="toggle-history-clusters"
+--- a/chrome/browser/resources/ntp4/incognito_tab.html
++++ b/chrome/browser/resources/ntp4/incognito_tab.html
+@@ -24,9 +24,6 @@ document.querySelector('#incognitothemec
+   <h1>$i18n{incognitoTabHeading}</h1>
+   <p id="subtitle">
+     <span>$i18n{incognitoTabDescription}</span>
+-    <a class="learn-more-button"
+-        href="$i18n{learnMoreLink}"
+-        aria-label="$i18nPolymer{learnMoreA11yLabel}">$i18n{learnMore}</a>
+   </p>
+   <div id="bulletpoints-wrapper">
+     <div class="bulletpoints first">$i18nRaw{incognitoTabFeatures}</div>
+--- a/chrome/browser/resources/settings/a11y_page/a11y_page.html
++++ b/chrome/browser/resources/settings/a11y_page/a11y_page.html
+@@ -24,7 +24,7 @@
+               external$="[[captionSettingsOpensExternally_]]">
+           </cr-link-row>
+         </template>
+-        <template is="dom-if" if="[[!captionSettingsOpensExternally_]]">
++        <template is="dom-if" if="[[false]]">
+           <cr-link-row id="captions"
+               class="hr"
+               label="$i18n{captionsTitle}"
+@@ -65,11 +65,6 @@
+             sub-label="$i18n{pdfOcrSubtitle}">
+         </settings-toggle-button>
+ </if>
+-        <cr-link-row class="hr" label="$i18n{moreFeaturesLink}"
+-            on-click="onMoreFeaturesLinkClick_" sub-label="$i18n{a11yWebStore}"
+-            button-aria-description="$i18n{opensInNewTab}"
+-            external>
+-        </cr-link-row>
+       </div>
+ <if expr="not is_chromeos">
+       <template is="dom-if" if="[[!captionSettingsOpensExternally_]]">
+--- a/chrome/browser/resources/settings/about_page/about_page.html
++++ b/chrome/browser/resources/settings/about_page/about_page.html
+@@ -120,10 +120,6 @@
+         </div>
+       </template>
+ </if>
+-      <cr-link-row class="hr" id="help" on-click="onHelpTap_"
+-          label="$i18n{aboutGetHelpUsingChrome}"
+-          button-aria-description="$i18n{opensInNewTab}"
+-          external></cr-link-row>
+ <if expr="_google_chrome">
+       <cr-link-row class="hr" id="reportIssue" on-click="onReportIssueTap_"
+           hidden="[[!prefs.feedback_allowed.value]]"
+--- a/chrome/browser/resources/settings/appearance_page/appearance_page.html
++++ b/chrome/browser/resources/settings/appearance_page/appearance_page.html
+@@ -22,12 +22,11 @@
+     <settings-animated-pages id="pages" section="appearance"
+         focus-config="[[focusConfig_]]">
+       <div route-path="default">
+-        <div class="settings-row first" id="themeRow"
++        <div class="cr-row first" id="themeRow"
+             hidden="[[!pageVisibility.setTheme]]">
+-          <cr-link-row class="first" hidden="[[!pageVisibility.setTheme]]"
+-              label="$i18n{themes}" sub-label="[[themeSublabel_]]"
+-              button-aria-description="$i18n{opensInNewTab}"
+-              on-click="openThemeUrl_" external></cr-link-row>
++          <div class="flex cr-padded-text">
++            <div>$i18n{themes}</div><div class="secondary">[[themeSublabel_]]</div>
++          </div>
+ <if expr="not is_linux">
+           <template is="dom-if" if="[[prefs.extensions.theme.id.value]]">
+             <div class="separator"></div>
+--- a/chrome/browser/resources/settings/appearance_page/appearance_page.ts
++++ b/chrome/browser/resources/settings/appearance_page/appearance_page.ts
+@@ -353,8 +353,8 @@ export class SettingsAppearancePageEleme
+       return;
+     }
+ 
+-    let i18nId;
+     // <if expr="is_linux">
++    let i18nId;
+     switch (this.systemTheme_) {
+       case SystemTheme.GTK:
+         i18nId = 'gtkTheme';
+@@ -366,11 +366,8 @@ export class SettingsAppearancePageEleme
+         i18nId = 'classicTheme';
+         break;
+     }
+-    // </if>
+-    // <if expr="not is_linux">
+-    i18nId = 'chooseFromWebStore';
+-    // </if>
+     this.themeSublabel_ = this.i18n(i18nId);
++    // </if>
+   }
+ 
+   /** @return Whether applied theme is set by policy. */
+--- a/chrome/browser/resources/settings/autofill_page/passwords_section.html
++++ b/chrome/browser/resources/settings/autofill_page/passwords_section.html
+@@ -125,6 +125,7 @@
+         </settings-toggle-button>
+       </template>
+     </if>
++<if expr="False">
+     <div id="checkPasswordsBannerContainer" class="cr-row"
+         hidden$="[[!shouldShowBanner_]]">
+       <picture>
+@@ -187,6 +188,7 @@
+       </cr-icon-button>
+     </div>
+ </if>
++</if>
+     <div class="cr-row first">
+       <h2 id="savedPasswordsHeading" class="flex">
+         $i18n{savedPasswordsHeading}
+--- a/chrome/browser/resources/settings/autofill_page/payments_section.html
++++ b/chrome/browser/resources/settings/autofill_page/payments_section.html
+@@ -64,11 +64,6 @@
+   </div>
+ </template>
+ 
+-<div id="manageLink" class="cr-row first">
+-  <!-- This span lays out the link correctly, relative to the text. -->
+-  <div class="cr-padded-text">$i18nRaw{manageCreditCardsLabel}</div>
+-</div>
+-
+ <div class="cr-row continuation">
+   <h2 class="flex">$i18n{creditCards}</h2>
+   <template is="dom-if"
+--- a/chrome/browser/resources/settings/basic_page/basic_page.html
++++ b/chrome/browser/resources/settings/basic_page/basic_page.html
+@@ -38,7 +38,7 @@
+               prefs="{{prefs}}">
+           </settings-privacy-guide-promo>
+         </settings-section>
+-        <template is="dom-if" if="[[showPage_(pageVisibility.safetyCheck)]]"
++        <template is="dom-if" if="[[false]]"
+             restamp>
+           <settings-section page-title="$i18n{safetyCheckSectionTitle}"
+               section="safetyCheck" nest-under-section="privacy"
+--- a/chrome/browser/resources/settings/basic_page/basic_page.ts
++++ b/chrome/browser/resources/settings/basic_page/basic_page.ts
+@@ -11,7 +11,6 @@ import 'chrome://resources/cr_elements/c
+ import 'chrome://resources/cr_elements/cr_shared_vars.css.js';
+ import 'chrome://resources/polymer/v3_0/iron-flex-layout/iron-flex-layout-classes.js';
+ import '../appearance_page/appearance_page.js';
+-import '../privacy_page/privacy_guide/privacy_guide_promo.js';
+ import '../privacy_page/privacy_page.js';
+ import '../safety_check_page/safety_check_page.js';
+ import '../autofill_page/autofill_page.js';
+--- a/chrome/browser/resources/settings/privacy_page/personalization_options.html
++++ b/chrome/browser/resources/settings/privacy_page/personalization_options.html
+@@ -13,7 +13,7 @@
+         padding-inline-start: 0;
+       }
+     </style>
+-<if expr="not is_chromeos">
++<if expr="False">
+     <!-- Signout is not supported yet on lacros, https://crbug.com/1217645 -->
+     <settings-toggle-button id="signinAllowedToggle"
+         class="hr"
+@@ -52,12 +52,6 @@
+     </settings-toggle-button>
+ </if><!-- not chromeos -->
+ </if><!-- _google_chrome -->
+-    <settings-toggle-button id="urlCollectionToggle"
+-        class="hr"
+-        pref="{{prefs.url_keyed_anonymized_data_collection.enabled}}"
+-        label="$i18n{urlKeyedAnonymizedDataCollection}"
+-        sub-label="$i18n{urlKeyedAnonymizedDataCollectionDesc}">
+-    </settings-toggle-button>
+ <if expr="_google_chrome">
+ <if expr="not chromeos_ash">
+     <settings-toggle-button id="spellCheckControl"
+--- a/chrome/browser/resources/settings/privacy_page/privacy_page.html
++++ b/chrome/browser/resources/settings/privacy_page/privacy_page.html
+@@ -39,15 +39,6 @@
+             label="$i18n{clearBrowsingData}"
+             sub-label="$i18n{clearBrowsingDataDescription}"
+             on-click="onClearBrowsingDataTap_"></cr-link-row>
+-        <template is="dom-if" if="[[isPrivacyGuideAvailable]]">
+-          <cr-link-row id="privacyGuideLinkRow" class="hr"
+-              start-icon="settings20:wind-rose"
+-              label="$i18n{privacyGuideLabel}"
+-              sub-label="$i18n{privacyGuideSublabel}"
+-              on-click="onPrivacyGuideClick_"
+-              role-description="$i18n{subpageArrowRoleDescription}">
+-          </cr-link-row>
+-        </template>
+         <template is="dom-if" if="[[isPrivacySandboxSettings4_]]">
+           <cr-link-row id="thirdPartyCookiesLinkRow"
+               start-icon="settings:cookie"
+--- a/chrome/browser/resources/settings/privacy_page/security_page.html
++++ b/chrome/browser/resources/settings/privacy_page/security_page.html
+@@ -146,11 +146,3 @@
+     </template>
+ </if>
+ 
+-    <cr-link-row id="advanced-protection-program-link"
+-        class="hr"
+-        label="$i18n{advancedProtectionProgramTitle}"
+-        sub-label="$i18n{advancedProtectionProgramDesc}"
+-        on-click="onAdvancedProtectionProgramLinkClick_"
+-        button-aria-description="$i18n{opensInNewTab}"
+-        external>
+-    </cr-link-row>
+--- a/chrome/browser/resources/settings/search_page/search_page.html
++++ b/chrome/browser/resources/settings/search_page/search_page.html
+@@ -12,11 +12,6 @@
+     <div class="cr-row first">
+       <div id="searchExplanation" class="flex cr-padded-text">
+         $i18n{searchExplanation}
+-        <a href="$i18n{searchExplanationLearnMoreURL}"
+-            aria-label="$i18n{searchExplanationLearnMoreA11yLabel}"
+-            target="_blank">
+-          $i18n{learnMore}
+-        </a>
+       </div>
+       <template is="dom-if" if="[[isDefaultSearchControlledByPolicy_(
+           prefs.default_search_provider_data.template_url_data)]]">
+--- a/chrome/browser/resources/settings/settings_page/settings_subpage.html
++++ b/chrome/browser/resources/settings/settings_page/settings_subpage.html
+@@ -91,7 +91,7 @@
+       </template>
+       <h1 class="cr-title-text">[[pageTitle]]</h1>
+       <slot name="subpage-title-extra"></slot>
+-      <template is="dom-if" if="[[learnMoreUrl]]">
++      <template is="dom-if" if="[[false]]">
+         <cr-icon-button iron-icon="cr:help-outline" dir="ltr"
+             aria-label="[[getLearnMoreAriaLabel_(pageTitle)]]" on-click="onHelpClick_">
+         </cr-icon-button>
+--- a/chrome/browser/ui/views/profiles/profile_menu_view.cc
++++ b/chrome/browser/ui/views/profiles/profile_menu_view.cc
+@@ -195,6 +195,7 @@ void ProfileMenuView::BuildMenu() {
+ }
+ 
+ gfx::ImageSkia ProfileMenuView::GetSyncIcon() const {
++  return gfx::ImageSkia();
+   Profile* profile = browser()->profile();
+   if (profile->IsOffTheRecord() || profile->IsGuestSession())
+     return gfx::ImageSkia();
+@@ -517,8 +518,7 @@ void ProfileMenuView::BuildIdentity() {
+         menu_subtitle_);
+   } else {
+     menu_title_ = std::u16string();
+-    menu_subtitle_ =
+-        l10n_util::GetStringUTF16(IDS_PROFILES_LOCAL_PROFILE_STATE);
++    menu_subtitle_ = std::u16string();
+     SetProfileIdentityInfo(
+         profile_name, background_color, edit_button_params,
+         ui::ImageModel::FromImage(
+--- a/chrome/browser/ui/views/sad_tab_view.cc
++++ b/chrome/browser/ui/views/sad_tab_view.cc
+@@ -549,17 +549,6 @@ SadTabView::SadTabView(content::WebConte
+   auto* actions_container =
+       container->AddChildView(std::make_unique<views::FlexLayoutView>());
+   actions_container->SetCrossAxisAlignment(views::LayoutAlignment::kCenter);
+-  // Do not show the help link in the kiosk session to prevent escape from a
+-  // kiosk app.
+-  if (!profiles::IsKioskSession()) {
+-    auto* help_link =
+-        actions_container->AddChildView(std::make_unique<views::Link>(
+-            l10n_util::GetStringUTF16(GetHelpLinkTitle())));
+-    help_link->SetCallback(base::BindRepeating(
+-        &SadTab::PerformAction, base::Unretained(this), Action::HELP_LINK));
+-    help_link->SetProperty(views::kTableVertAlignKey,
+-                           views::LayoutAlignment::kCenter);
+-  }
+   action_button_ =
+       actions_container->AddChildView(std::make_unique<views::MdTextButton>(
+           base::BindRepeating(&SadTabView::PerformAction,
