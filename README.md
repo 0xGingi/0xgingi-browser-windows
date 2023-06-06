@@ -23,6 +23,10 @@ An experimental [ungoogled-chromium](https://github.com/ungoogled-software/ungoo
 ## Install
 [Releases](https://github.com/0xgingi/0xgingi-browser/releases) page.
 
+*Highly Reccomended To Install [Ublock Origin](https://github.com/gorhill/uBlock/releases/tag/1.49.2) Extension*
+
+Alternativly, instead of manually installing add-ons, [follow this guide](https://avoidthehack.com/manually-install-extensions-ungoogled-chromium) to install the chromium web store.
+
 ## Goals
 
 - Enhance Default Browser Privacy + Security OOTB
