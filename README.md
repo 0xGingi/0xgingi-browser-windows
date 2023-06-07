@@ -26,7 +26,9 @@ An experimental [ungoogled-chromium](https://github.com/ungoogled-software/ungoo
 
 Alternativly, instead of manually installing add-ons, [follow this guide](https://avoidthehack.com/manually-install-extensions-ungoogled-chromium) to install the chromium web store.
 
-Make SearxNG/search.0xgingi.com your default search engine
+Whitelist Sites for Cookies at chrome://settings/cookies (Always use cookies)
+
+Make SearxNG/search.0xgingi.com your default search engine:
 
 ![Animation](https://github.com/0xGingi/0xgingi-browser/assets/104647854/6fe1132b-25ee-45e2-b215-2542e5860407)
 
