@@ -116,7 +116,7 @@
     "gingi":{
       "name": "0xGingi",
       "keyword": "search.0xgingi.com",
-      "favicon_url": "",
+      "favicon_url": "https://search.0xgingi.com/searxng/static/themes/simple/img/favicon.png",
       "search_url": "https://search.0xgingi.com/searxng/search?q=%s",
       "suggest_url": "https://search.0xgingi.com/searxng/search?q=%s",
       "type": "SEARCH_ENGINE_GINGI",
