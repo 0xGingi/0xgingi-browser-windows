@@ -28,10 +28,21 @@ Alternativly, instead of manually installing add-ons, [follow this guide](https:
 
 Whitelist Sites for Cookies at chrome://settings/cookies (Always use cookies)
 
+## 0xGingi SearxNG Instance
+
 Make SearxNG/search.0xgingi.com your default search engine:
 
 ![Animation](https://github.com/0xGingi/0xgingi-browser/assets/104647854/6fe1132b-25ee-45e2-b215-2542e5860407)
 
+## DoH DNS Proxy
+0xGingi-Browser comes with a DNS-Over-HTTPS Built-in. It proxies DNS to Cloudflare, Quad9, and NextDNS then uses the fastest responce. Of course, I collect no logs.
+Enable it in [chrome://settings/security](chrome://settings/security) -> Use Secure DNS -> With -> 0xGingi
+
+To Use the DNS Proxy outside of the Browser:
+ 
+DoH: https://dns-proxy.0xgingi.com/dns-query
+
+DoT: dns-proxy.0xgingi.com
 
 ## Goals
 
@@ -41,8 +52,6 @@ Make SearxNG/search.0xgingi.com your default search engine:
 
 ## TO-DO
 
-- Change Default DOH DNS to 0xGingi Cloudflare Proxy
-- Default Search Engine to search.0xgingi.com
 - Install some Plugins (eg Ublock Origin) by default
 - More Hardening
 - Other Misc. Changes to Enchance Privacy
