@@ -16,7 +16,6 @@ An experimental [ungoogled-chromium](https://github.com/ungoogled-software/ungoo
 |--|Bromite Patches|
 |--|Debian Patches|
 |--|Iridium Browser Patches|
-|--|SearxNG as Default Search Engine(Search.0xgingi.com)
 |--|Chromium source based browser with regular security updates|
 |--|Adequately maintained repository and software|
 
@@ -27,6 +26,11 @@ An experimental [ungoogled-chromium](https://github.com/ungoogled-software/ungoo
 
 Alternativly, instead of manually installing add-ons, [follow this guide](https://avoidthehack.com/manually-install-extensions-ungoogled-chromium) to install the chromium web store.
 
+Make SearxNG/search.0xgingi.com your default search engine
+
+![Animation](https://github.com/0xGingi/0xgingi-browser/assets/104647854/6fe1132b-25ee-45e2-b215-2542e5860407)
+
+
 ## Goals
 
 - Enhance Default Browser Privacy + Security OOTB
@@ -36,6 +40,7 @@ Alternativly, instead of manually installing add-ons, [follow this guide](https:
 ## TO-DO
 
 - Change Default DOH DNS to 0xGingi Cloudflare Proxy
+- Default Search Engine to search.0xgingi.com
 - Install some Plugins (eg Ublock Origin) by default
 - More Hardening
 - Other Misc. Changes to Enchance Privacy
