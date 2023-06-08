@@ -49,6 +49,9 @@ DoH: https://dns-proxy.0xgingi.com/dns-query
 
 DoT: dns-proxy.0xgingi.com
 
+![dns](https://github.com/0xGingi/0xgingi-browser/assets/104647854/4b529042-f363-4840-8d03-d6aa62ac2a65)
+
+
 ## Goals
 
 - Enhance Default Browser Privacy + Security OOTB
