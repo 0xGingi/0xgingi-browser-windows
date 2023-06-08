@@ -24,7 +24,7 @@ An experimental [ungoogled-chromium](https://github.com/ungoogled-software/ungoo
 
 *Highly Reccomended To Install [Ublock Origin](https://github.com/gorhill/uBlock/releases/tag/1.49.2) Extension with setting reccomendations from [Arkenfox](https://github.com/arkenfox/user.js/wiki/4.1-Extensions)*
 
-Alternativly, instead of manually installing add-ons, [follow this guide](https://avoidthehack.com/manually-install-extensions-ungoogled-chromium) to install the chromium web store.
+Alternativly, instead of manually installing add-ons, install the chromium web store. See Below For Instructions.
 
 Whitelist Sites for Cookies at chrome://settings/cookies (Always use cookies)
 
@@ -61,6 +61,15 @@ DoT: dns-proxy.0xgingi.com
 - More Hardening
 - Other Misc. Changes to Enchance Privacy
 - Automatic Updates (Best option until automatic updates are working is to watch for releases on github so you get a email when a new release is added, I will try to have all chromium updates released within 24 hours)
+
+## Install Chromium Web Store
+The Chromium Web Store Exension allows you to install extensions from the chrome web store
+
+Change The Flag chrome://flags/#extension-mime-request-handling to Always prompt for install
+
+Download the latest .crx from [https://github.com/NeverDecaf/chromium-web-store/releases](https://github.com/NeverDecaf/chromium-web-store/releases)
+
+Upon Downloading, the browser should prompt for you to install the extension. 
 
 ## Building
 
