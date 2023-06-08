@@ -30,12 +30,17 @@ Whitelist Sites for Cookies at chrome://settings/cookies (Always use cookies)
 
 ## 0xGingi SearxNG Instance
 
-Make SearxNG/search.0xgingi.com your default search engine:
+Make my SearxNG Instance https://search.0xgingi.com your default search engine 
+
+No logs are collected, this includes Queries and IP Addresses:
 
 ![Animation](https://github.com/0xGingi/0xgingi-browser/assets/104647854/6fe1132b-25ee-45e2-b215-2542e5860407)
 
 ## DoH DNS Proxy
-0xGingi-Browser comes with a DNS-Over-HTTPS Built-in. It proxies DNS to Cloudflare, Quad9, and NextDNS then uses the fastest responce. Of course, I collect no logs.
+0xGingi-Browser comes with a DNS-Over-HTTPS Proxy Built-in. It proxies DNS to Cloudflare, Quad9, and NextDNS then uses the fastest responce. 
+
+No logs are collected, this includes Queries and IP Addresses.
+
 Enable it in [chrome://settings/security](chrome://settings/security) -> Use Secure DNS -> With -> 0xGingi
 
 To Use the DNS Proxy outside of the Browser:
