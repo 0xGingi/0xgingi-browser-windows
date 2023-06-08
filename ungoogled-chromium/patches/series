@@ -33,6 +33,7 @@ core/ungoogled-chromium/block-requests.patch
 core/ungoogled-chromium/disable-privacy-sandbox.patch
 core/ungoogled-chromium/doh-changes.patch
 core/bromite/disable-fetching-field-trials.patch
+core/bromite/DoH-improvements.patch
 
 extra/ungoogled-chromium/add-ungoogled-flag-headers.patch
 extra/inox-patchset/0006-modify-default-prefs.patch
