@@ -5,6 +5,8 @@
 
 # 0xGingi Browser
 An experimental [ungoogled-chromium](https://github.com/ungoogled-software/ungoogled-chromium-windows) fork that enhances privacy and security.
+	
+Now on WinGet! The Recommend Way to install for easier updates! See [Install](#install)
 
 </div>
 
@@ -20,6 +22,9 @@ An experimental [ungoogled-chromium](https://github.com/ungoogled-software/ungoo
 |--|Adequately maintained repository and software|
 
 ## Install
+
+Recommend: winget install The0xGingi-BrowserAuthors.0xGingi-BrowserInstaller
+
 [Releases](https://github.com/0xgingi/0xgingi-browser/releases) page.
 
 *Highly Reccomended To Install [Ublock Origin](https://github.com/gorhill/uBlock/releases/tag/1.49.2) Extension with setting reccomendations from [Arkenfox](https://github.com/arkenfox/user.js/wiki/4.1-Extensions)*
