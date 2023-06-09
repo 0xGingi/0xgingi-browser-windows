@@ -29,7 +29,7 @@ Recommend: winget install The0xGingi-BrowserAuthors.0xGingi-BrowserInstaller
 
 *Highly Reccomended To Install [Ublock Origin](https://github.com/gorhill/uBlock/releases/tag/1.49.2) Extension with setting reccomendations from [Arkenfox](https://github.com/arkenfox/user.js/wiki/4.1-Extensions)*
 
-Alternativly, instead of manually installing add-ons, install the chromium web store. See Below For Instructions.
+Alternativly, instead of manually installing add-ons, install the chromium web store. [See Here For Instructions](#install-chromium-web-store).
 
 Whitelist Sites for Cookies at chrome://settings/cookies (Always use cookies)
 
@@ -57,6 +57,18 @@ DoT: dns-proxy.0xgingi.com
 ![dns](https://github.com/0xGingi/0xgingi-browser/assets/104647854/4b529042-f363-4840-8d03-d6aa62ac2a65)
 
 
+## Install Chromium Web Store
+The Chromium Web Store Exension allows you to install extensions from the chrome web store
+
+Change The Flag chrome://flags/#extension-mime-request-handling to Always prompt for install
+
+Download the latest .crx from [https://github.com/NeverDecaf/chromium-web-store/releases](https://github.com/NeverDecaf/chromium-web-store/releases)
+
+Upon Downloading, the browser should prompt for you to install the extension. 
+
+Enable Developer Mode in Extension Settings to be able to update extensions
+
+
 ## Goals
 
 - Enhance Default Browser Privacy + Security OOTB
@@ -67,15 +79,6 @@ DoT: dns-proxy.0xgingi.com
 
 - More Hardening
 - Other Misc. Changes to Enchance Privacy
-
-## Install Chromium Web Store
-The Chromium Web Store Exension allows you to install extensions from the chrome web store
-
-Change The Flag chrome://flags/#extension-mime-request-handling to Always prompt for install
-
-Download the latest .crx from [https://github.com/NeverDecaf/chromium-web-store/releases](https://github.com/NeverDecaf/chromium-web-store/releases)
-
-Upon Downloading, the browser should prompt for you to install the extension. 
 
 ## Building
 
