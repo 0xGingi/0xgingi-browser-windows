@@ -71,7 +71,7 @@ Enable Developer Mode in Extension Settings to be able to update extensions
 ## Enable Widevine DRM
 Download Widevine: [https://dl.google.com/widevine-cdm/4.10.2557.0-win-x64.zip](https://dl.google.com/widevine-cdm/4.10.2557.0-win-x64.zip)
 
-Go to: %localappdata%\Chromium\Application\[YOUR CHROMIUM VERSION]
+Go to: %localappdata%\Chromium\Application\YOUR_CHROMIUM_VERSION
 
 Create a new folder named WidevineCdm - Extract LICENSE.txt and manifest.json
 
