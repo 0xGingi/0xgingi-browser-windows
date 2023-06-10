@@ -79,7 +79,7 @@ Inside WidevineCdm folder, create another folder _platform_specific
 
 Inside _platform_specific folder, create another folder named win_x64 - Extract widevinecdm.dll, widevinecdm.dll.lib, and widevinecdm.dll.sig inside the win_x64 folder
 
-Close 0xGingi-Browser & Reopen it, WideVine should now be abled, you can confirm under chrome://components/
+Close 0xGingi-Browser & Reopen it, WideVine should now be enabled, you can confirm under chrome://components/
 
 ## Goals
 
