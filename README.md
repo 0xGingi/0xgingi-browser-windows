@@ -127,12 +127,15 @@ NOTE: The commands below assume the `py` command was installed by Python 3 into 
 Run in `cmd.exe` (as administrator):
 
 ```cmd
-git clone https://github.com/0xGingi/0xgingi-browser
+git clone --recurse-submodules https://github.com/0xGingi/0xgingi-browser
 pip3 install pillow
 py build.py
 cp -r modified-files/* /
-py rebrand/config.py
-py rebrand/script.py
+cd rebrand
+(modify script.py with the location of 0xGingi-Browser source)
+py config.py
+py script.py
+cd ..
 py build2.py
 py package.py
 ```
