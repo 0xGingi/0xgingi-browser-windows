@@ -116,8 +116,9 @@ Run in `cmd.exe` (as administrator):
 
 ```cmd
 git clone https://github.com/0xGingi/0xgingi-browser
+pip3 install pillow
 py build.py
-cp -r modified-files/* ./
+cp -r modified-files/* /
 py rebrand/config.py
 py rebrand/script.py
 py build2.py
