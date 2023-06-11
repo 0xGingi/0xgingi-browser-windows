@@ -4,7 +4,7 @@ import glob
 from PIL import Image
 from config import sizes, names
 
-CHROMIUM_PATH = "H:/114/ungoogled-chromium-windows/build/src/"
+CHROMIUM_PATH = "H:/ungoogled-chromium-windows/build/src/"
 BROWSER_NAME = "0xGingi-Browser"
 EXTENSIONS = ['grd', 'grdp']
 
