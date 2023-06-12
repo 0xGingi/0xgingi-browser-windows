@@ -23,7 +23,7 @@ Now on WinGet! The Recommend Way to install for easier updates! See [Install](#i
 
 ## Install
 
-Recommend: winget install The0xGingi-BrowserAuthors.0xGingi-BrowserInstaller
+Recommend: winget install The0xGingi-BrowserAuthors.0xGingi-BrowserInstaller (Note: Updates will be slower using winget due to the time it takes for an update to be accepted)
 
 [Releases](https://github.com/0xgingi/0xgingi-browser/releases) page.
 
