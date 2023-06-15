@@ -120,7 +120,7 @@
       "search_url": "https://search.0xgingi.com/searxng/search?q=%s",
       "suggest_url": "https://search.0xgingi.com/searxng/autocompleter?q=%s",
       "type": "SEARCH_ENGINE_GINGI",
-      "id": 1
+      "id": 103
     },
 
     "google": {
@@ -132,7 +132,7 @@
       "type": "SEARCH_ENGINE_GOOGLE",
       "preconnect_to_search_url" : "ALLOWED",
       "prefetch_likely_navigations" : "ALLOWED",
-      "id": 103
+      "id": 1
     },
 
     "mail_ru": {
