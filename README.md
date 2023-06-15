@@ -6,7 +6,7 @@
 # 0xGingi Browser
 An experimental [ungoogled-chromium](https://github.com/ungoogled-software/ungoogled-chromium-windows) fork that enhances privacy and security.
 	
-Now on WinGet! The Recommend Way to install for easier updates! See [Install](#install)
+Now on WinGet! See [Install](#install)
 
 </div>
 
@@ -23,7 +23,7 @@ Now on WinGet! The Recommend Way to install for easier updates! See [Install](#i
 
 ## Install
 
-Recommend: winget install The0xGingi-BrowserAuthors.0xGingi-BrowserInstaller (Note: Updates will be slower using winget due to the time it takes for an update to be accepted)
+winget install The0xGingi-BrowserAuthors.0xGingi-BrowserInstaller (Note: Version on WinGet is currently out of date! Please install from Releases)
 
 [Releases](https://github.com/0xgingi/0xgingi-browser/releases) page.
 
