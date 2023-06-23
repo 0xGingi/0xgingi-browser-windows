@@ -46,7 +46,7 @@ def main():
     args = parser.parse_args()
 
     shutil.copyfile('build/src/out/Default/mini_installer.exe',
-        'build/ungoogled-chromium_{}-{}.{}_installer.exe'.format(
+        'build/0xgingi-browser_{}-{}.{}_installer.exe'.format(
             get_chromium_version(), _get_release_revision(), _get_packaging_revision()))
 
     # We need to remove these files, or they'll end up in the zip files that will be generated.
@@ -59,7 +59,7 @@ def main():
         pass
 
     build_outputs = Path('build/src/out/Default')
-    output = Path('build/ungoogled-chromium_{}-{}.{}_windows.zip'.format(
+    output = Path('build/0xgingi-browser_{}-{}.{}_windows.zip'.format(
         get_chromium_version(), _get_release_revision(), _get_packaging_revision()))
 
     files_generator = filescfg.filescfg_generator(
