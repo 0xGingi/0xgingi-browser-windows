@@ -81,6 +81,8 @@ Inside _platform_specific folder, create another folder named win_x64 - Extract 
 
 Close 0xGingi-Browser & Reopen it, WideVine should now be enabled, you can confirm under chrome://components/
 
+Create a backup of the WidevineCdm Folder to easily readd Widevine after an update!
+
 ## Goals
 
 - Enhance Default Browser Privacy + Security OOTB
