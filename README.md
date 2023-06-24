@@ -23,7 +23,9 @@ Now on WinGet! See [Install](#install)
 
 ## Install
 
-winget install The0xGingi-BrowserAuthors.0xGingi-BrowserInstaller (Note: Version on WinGet is currently out of date! Please install from Releases)
+winget install 0xGingi.Browser
+
+(If you installed with the old winget package, please uninstall that one and use this one, else you will not get updates!)
 
 [Releases](https://github.com/0xgingi/0xgingi-browser/releases) page.
 
