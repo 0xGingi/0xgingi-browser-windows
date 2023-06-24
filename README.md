@@ -39,6 +39,8 @@ Whitelist Sites for Cookies at chrome://settings/cookies (Always use cookies)
 
 Make my SearxNG Instance https://search.0xgingi.com your default search engine 
 
+Use Engine Token "unlockall" in Preferences to unlock Google and Brave! Fuck Bots!
+
 No logs are collected, this includes Queries and IP Addresses:
 
 ![Animation](https://github.com/0xGingi/0xgingi-browser/assets/104647854/6fe1132b-25ee-45e2-b215-2542e5860407)
