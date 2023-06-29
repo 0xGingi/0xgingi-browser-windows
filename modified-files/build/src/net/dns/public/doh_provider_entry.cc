@@ -275,7 +275,7 @@ const DohProviderEntry::List& DohProviderEntry::GetList() {
           MAKE_BASE_FEATURE_WITH_STATIC_STORAGE(
               DohProviderGingi, base::FEATURE_ENABLED_BY_DEFAULT),
           DohProviderIdForHistogram::kGingi,
-          {"23.94.179.96"},
+          {"157.90.145.83", "2a01:4f8:1c17:4d4f::1"},
           /*dns_over_tls_hostnames=*/
           {"dns-proxy.0xgingi.com"},
           "https://dns-proxy.0xgingi.com/dns-query",
