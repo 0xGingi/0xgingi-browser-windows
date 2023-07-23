@@ -1,9 +1,9 @@
 <div align="center">
 
-  ![logo](https://github.com/0xGingi/0xgingi-browser/assets/104647854/cec41b3d-0279-4405-89f0-33d6682b681c)
+![logo](https://github.com/0xGingi/0xgingi-browser/assets/104647854/cec41b3d-0279-4405-89f0-33d6682b681c)
 
 
-# 0xGingi Browser
+# ![product_logo_32](https://github.com/0xGingi/0xgingi-browser/assets/104647854/51faa38a-55b4-4a2c-822b-6b5e03bf014a)0xGingi Browser
 An experimental [ungoogled-chromium](https://github.com/ungoogled-software/ungoogled-chromium-windows) fork that enhances privacy and security.
 	
 Now on WinGet! See [Install](#install)
